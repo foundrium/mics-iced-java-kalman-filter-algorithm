@@ -11,9 +11,6 @@
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
-import logging
-logging.basicConfig(level=logging.DEBUG)
-
 
 class KalmanFilter(object):
     def __init__(self, dt, u, std_acc, std_meas):
@@ -91,11 +88,7 @@ def main():
         kf.update(z.item(0))
 
 
-    print('here')
-    matplotlib.use("TkAgg")
-    matplotlib.interactive(True)
     fig = plt.figure()
-    print('here2')
 
     fig.suptitle('Example of Kalman filter for tracking a moving object in 1-D', fontsize=20)
 
@@ -108,7 +101,7 @@ def main():
     plt.xlabel('Time (s)', fontsize=20)
     plt.ylabel('Position (m)', fontsize=20)
     plt.legend()
-    plt.savefig('docs/kalman-simple-object-tracking.png') # slight change to original code to handle WSL on Windows
+    plt.savefig('docs/kalman-simple-object-tracking.png', dpi=200, bbox_inches='tight') # slight change to original code to handle WSL on Windows
 
 
 if __name__ == '__main__':
